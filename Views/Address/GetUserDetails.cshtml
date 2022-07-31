@@ -1,0 +1,156 @@
+﻿@model HRMIS_PERSONEL_PROFILE.Models.PERSONAL_INFORMATION
+
+@{
+    ViewBag.Title = "GetUserDetails";
+
+
+}
+
+
+
+@if (TempData["NINERROR"] != null)
+{
+    <script>
+     swal({
+         title: "ERROR!",
+         text: "@TempData["NINERROR"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+
+}
+else if (TempData["FILENOERROR"] != null)
+{
+    <script>
+     swal({
+         title: "ERROR!",
+         text: "@TempData["FILENOERROR"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+}
+else if (TempData["EMAILERROR"] != null)
+{
+    <script>
+     swal({
+         title: "ERROR!",
+         text: "@TempData["EMAILERROR"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+}
+else if (TempData["FILENOERROR"] != null)
+{
+    <script>
+     swal({
+         title: "ERROR!",
+         text: "@TempData["FILENOERROR"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+}
+else if (TempData["mailerror"] != null)
+{
+
+    <script>
+     swal({
+         title: "ERROR!",
+         text: "@TempData["mailerror"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+}
+else if (TempData["empid_email"] != null)
+{
+
+    <script>
+     swal({
+         title: "ERROR!",
+         text: "@TempData["empid_email"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+}
+else if (TempData["usererror"] != null)
+{
+
+    <script>
+     swal({
+         title: "ERROR!",
+         text: "@TempData["usererror"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+}
+else if (TempData["idmissmatch"] != null)
+{
+    <script>
+     swal({
+         title: "ERROR!",
+         text: "@TempData["idmissmatch"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+}
+
+
+
+<div class="card " style="justify-content:center">
+    <div class="card-header">
+        Featured
+    </div>
+    <div class="card-body ">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div style="align-items:center;">
+                <h4>....</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+
+                    @Html.LabelFor(model => model.FileNo, htmlAttributes: new { @class = "" })
+                    @Html.EditorFor(model => model.FileNo, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.FileNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.NIN, htmlAttributes: new { @class = "" })
+                    @Html.EditorFor(model => model.NIN, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.NIN, "", new { @class = "text-danger" })
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="">
+                        <input type="submit" value="FIND" class="btn btn-primary w-100" />
+                    </div>
+                </div>
+            </div>
+
+
+        }
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

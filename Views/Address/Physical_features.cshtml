@@ -1,0 +1,123 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.PHYSICAL_FEATURES>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ColourOfEye)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ColourOfHair)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Height)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Weight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DressSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SkirtLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShirtCollarSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrouserLength)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WaistSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ShoeSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HeadCapSize)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Complexion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DistinguishingFeatures)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecorded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColourOfEye)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ColourOfHair)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Height)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Weight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DressSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SkirtLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShirtCollarSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrouserLength)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WaistSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ShoeSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HeadCapSize)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Complexion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DistinguishingFeatures)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecorded)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FeatureID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FeatureID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FeatureID })
+        </td>
+    </tr>
+}
+
+</table>

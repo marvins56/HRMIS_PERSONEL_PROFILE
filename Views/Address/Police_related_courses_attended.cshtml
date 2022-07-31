@@ -1,0 +1,81 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.POLICE_RELATED_COURSES_ATTENDED>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RankID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.courseID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PCID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Award)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.From)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.To)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecorded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RankID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.courseID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PCID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Award)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.From)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.To)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecorded)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.PoliceCourseID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.PoliceCourseID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.PoliceCourseID })
+        </td>
+    </tr>
+}
+
+</table>

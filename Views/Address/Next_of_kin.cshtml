@@ -1,0 +1,105 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.NEXT_OF_KIN1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Relationship)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Village)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Parish)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Town)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Subcounty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.County)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DistrictID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TelephoneNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecorded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Relationship)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Village)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Parish)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Town)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Subcounty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.County)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DistrictID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TelephoneNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecorded)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.NextOfKin1ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.NextOfKin1ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.NextOfKin1ID })
+        </td>
+    </tr>
+}
+
+</table>

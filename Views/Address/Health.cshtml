@@ -1,0 +1,93 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.HEALTH>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhysicalDisability)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfDisabilty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HowInflicated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WhenInflicated)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TerminalIllness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfIllness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DurationOfIllness)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OnMedication)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecorded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhysicalDisability)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeOfDisabilty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HowInflicated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WhenInflicated)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TerminalIllness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeOfIllness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DurationOfIllness)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OnMedication)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecorded)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.HealthID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.HealthID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.HealthID })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,111 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.PAY_AND_WELFARE>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IPPSNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SalaryScaleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MonthlySalary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountTitle)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccountTypeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BankID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BranchID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TINNO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PayrollStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReasonforInactive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecorded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IPPSNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SalaryScaleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MonthlySalary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountTitle)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccountTypeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BankID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BranchID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TINNO)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PayrollStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReasonforInactive)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecorded)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.WelfareID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.WelfareID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.WelfareID })
+        </td>
+    </tr>
+}
+
+</table>

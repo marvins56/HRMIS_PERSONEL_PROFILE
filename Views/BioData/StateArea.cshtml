@@ -1,0 +1,236 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.PERSONAL_INFORMATION>
+
+@{
+    ViewBag.Title = "StateArea";
+}
+
+<h2>StateArea</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ForceNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FileNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RankID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TitleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Religion)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Dateofbirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Placeofbirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MaritalStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfMarriage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfMarriage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NationalityID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TribeID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BloodGroupID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WarrantCardNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateIssued)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassportNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassportDateIssued)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PassportExpiryDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IssuingAuthorityID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Photo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Path)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecorded)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgeBal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SerialNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Passcode)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ForceNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RankID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MiddleName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TitleID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Gender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Religion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Dateofbirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Placeofbirth)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaritalStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TypeOfMarriage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfMarriage)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NationalityID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TribeID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.BloodGroupID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.WarrantCardNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateIssued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportDateIssued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PassportExpiryDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IssuingAuthorityID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Photo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.RecordedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateRecorded)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AgeBal)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SerialNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NIN)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Passcode)
+            </td>
+
+        </tr>
+    }
+
+</table>
+<div style="padding:10px; border:1px solid black">
+    <div><a href="@Url.Action("Report",new {id= "PDF"})"> Get Report PDF</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Excel"})"> Get Report Excel</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Word"})"> Get Report Word</a></div>
+    <div><a href="@Url.Action("Report",new {id= "Image"})"> Get Report Image</a></div>
+</div>
+
+

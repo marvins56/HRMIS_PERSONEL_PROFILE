@@ -1,0 +1,99 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.DETAILS_OF_EMPLOYMENT>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmploymentStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfEnlistment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlaceOfEnlistment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TypeOfEnlistment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstitutionID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DurationOfTraining)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Duration)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfPosting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PlaceOfPosting)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecorded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmploymentStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfEnlistment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlaceOfEnlistment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TypeOfEnlistment)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InstitutionID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DurationOfTraining)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Duration)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfPosting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PlaceOfPosting)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecorded)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.EmptStatusID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.EmptStatusID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.EmptStatusID })
+        </td>
+    </tr>
+}
+
+</table>

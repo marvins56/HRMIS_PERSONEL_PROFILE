@@ -1,0 +1,70 @@
+﻿@model HRMIS_PERSONEL_PROFILE.Models.PERSONAL_INFORMATION
+
+@{
+    ViewBag.Title = "verify";
+}
+
+
+
+@if (TempData["error"] != null)
+{
+
+    <script>
+     swal({
+         title: "error!",
+         text: "@TempData["error"]",
+         icon: "error",
+         button: "Dismiss",
+     });
+
+    </script>
+
+}
+
+@if (TempData["verificationlink"] != null)
+{
+
+    <script>
+     swal({
+         title: "please check your mail for security code",
+         text: "@TempData["success"]",
+         icon: "success",
+         button: "Dismiss",
+     });
+
+    </script>
+
+}
+
+
+@using (Html.BeginForm("verify", "Address", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+
+    <h4>ENTER SECURITY CODE</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+<div class="form-group row">
+    @Html.LabelFor(model => model.Passcode, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+    <div class="col-sm-10">
+
+        @Html.EditorFor(model => model.Passcode, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Passcode, "", new { @class = "text-danger" })  <br />
+        <input type="submit" value="VALIDATE" class="btn btn-primary w-100" />
+    </div>
+   
+</div>
+        
+
+
+        }
+
+
+
+
+
+        @section Scripts {
+            @Scripts.Render("~/bundles/jqueryval")
+        }

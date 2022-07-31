@@ -1,0 +1,69 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.PARENT>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.EmpID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameOfFather)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FathersStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NameOfMother)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MothersStatus)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.RecordedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRecorded)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameOfFather)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FathersStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NameOfMother)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MothersStatus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.RecordedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateRecorded)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ParentID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ParentID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ParentID })
+        </td>
+    </tr>
+}
+
+</table>

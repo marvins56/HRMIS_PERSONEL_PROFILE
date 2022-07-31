@@ -1,0 +1,33 @@
+﻿@model IEnumerable<HRMIS_PERSONEL_PROFILE.Models.Language>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LanguageCategory)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Language1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LanguageCategory)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Language1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LangID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LangID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LangID })
+        </td>
+    </tr>
+}
+
+</table>
