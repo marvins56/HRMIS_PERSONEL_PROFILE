@@ -15,7 +15,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
     {
         [Display(Name = "File Number")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "File Number field required")]
-        [MinLength(4, ErrorMessage = "invalid File Number length")]
+       
         public string FileNo { get; set; }
 
         [Display(Name = "NIN ")]

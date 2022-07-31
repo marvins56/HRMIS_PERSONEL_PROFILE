@@ -345,8 +345,8 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             int id = Convert.ToInt32(Session["userid"]);
             try
             {
-               
-             db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList();
+                TempData["PERSONAL_INFORMATION"] = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList().Count();
+                db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList();
                
             }
             catch(Exception e)
@@ -361,81 +361,250 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         public List<HOME_ADDRESS> Get_HomeAddress()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["HOME_ADDRESS"] = db.HOME_ADDRESS.Where(a => a.EmpID == id).ToList().Count();
+                db.HOME_ADDRESS.Where(a => a.EmpID == id).ToList();
+
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.HOME_ADDRESS.Where(a => a.EmpID == id).ToList());
         }
         public List<DETAILS_OF_EMPLOYMENT> Get_employmentdetails()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["DETAILS_OF_EMPLOYMENT"] = db.DETAILS_OF_EMPLOYMENT.Where(a => a.EmpID == id).ToList().Count();
+                db.DETAILS_OF_EMPLOYMENT.Where(a => a.EmpID == id).ToList();
+
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.DETAILS_OF_EMPLOYMENT.Where(a => a.EmpID == id).ToList());
         }
         public List<EDUCATION_AND_QUALIFICATIONS_Old> Get_educationQualifications()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["EDUCATION_AND_QUALIFICATIONS_Old"] = db.EDUCATION_AND_QUALIFICATIONS_Old.Where(a => a.EmpID == id).ToList().Count();
+                db.EDUCATION_AND_QUALIFICATIONS_Old.Where(a => a.EmpID == id).ToList();
+
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.EDUCATION_AND_QUALIFICATIONS_Old.Where(a => a.EmpID == id).ToList());
         }
         public List<AWARDS_AND_COMMENDATIONS> Get_Awards()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["AWARDS_AND_COMMENDATIONS"] = db.AWARDS_AND_COMMENDATIONS.Where(a => a.EmpID == id).ToList().Count();
+                db.AWARDS_AND_COMMENDATIONS.Where(a => a.EmpID == id).ToList();
+
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.AWARDS_AND_COMMENDATIONS.Where(a => a.EmpID == id).ToList());
         }
         public List<PHYSICAL_ADDRESSES> Get_physicalAddress()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["PHYSICAL_ADDRESSES"] = db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == id).ToList().Count();
+                db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == id).ToList();
+
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == id).ToList());
         }
         public List<PHYSICAL_FEATURES> Get_physicalfeatures()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["PHYSICAL_FEATURES"] = db.PHYSICAL_FEATURES.Where(a => a.EmpID == id).ToList().Count();
+                db.PHYSICAL_FEATURES.Where(a => a.EmpID == id).ToList();
+
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.PHYSICAL_FEATURES.Where(a => a.EmpID == id).ToList());
         }
         public List<DEPENDANT> Get_dependant()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["DEPENDANTS"] = db.DEPENDANTS.Where(a => a.EmpID == id).ToList().Count();
+                db.DEPENDANTS.Where(a => a.EmpID == id).ToList();
+
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.DEPENDANTS.Where(a => a.EmpID == id).ToList());
         }
         public List<ACCOMMODATION> accomodation()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["ACCOMMODATIONs"] = db.ACCOMMODATIONs.Where(a => a.EmpID == id).ToList().Count();
+                db.ACCOMMODATIONs.Where(a => a.EmpID == id).ToList();
+
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.ACCOMMODATIONs.Where(a => a.EmpID == id).ToList());
         }
         public List<LANGUAGES_PROFFECIENCY> Get_Language()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["LANGUAGES_PROFFECIENCY"] = db.LANGUAGES_PROFFECIENCY.Where(a => a.EmpID == id).ToList().Count();
+                db.LANGUAGES_PROFFECIENCY.Where(a => a.EmpID == id).ToList();
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.LANGUAGES_PROFFECIENCY.Where(a => a.EmpID == id).ToList());
         }
         public List<HEALTH> Get_health()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["HEALTHs"] = db.HEALTHs.Where(a => a.EmpID == id).ToList().Count();
+                db.HEALTHs.Where(a => a.EmpID == id).ToList();
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.HEALTHs.Where(a => a.EmpID == id).ToList());
         }
         public List<PARENT> Get_parents()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["PARENTS"] = db.PARENTS.Where(a => a.EmpID == id).ToList().Count();
+                db.PARENTS.Where(a => a.EmpID == id).ToList();
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.PARENTS.Where(a => a.EmpID == id).ToList());
         }
         public List<PAY_AND_WELFARE> Paywelfare()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["PAY_AND_WELFARE"] = db.PAY_AND_WELFARE.Where(a => a.EmpID == id).ToList().Count();
+                db.PAY_AND_WELFARE.Where(a => a.EmpID == id).ToList();
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.PAY_AND_WELFARE.Where(a => a.EmpID == id).ToList());
         }
         public List<NEXT_OF_KIN1> NOK1()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["NEXT_OF_KIN1"] = db.NEXT_OF_KIN1.Where(a => a.EmpID == id).ToList().Count();
+                db.NEXT_OF_KIN1.Where(a => a.EmpID == id).ToList();
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.NEXT_OF_KIN1.Where(a => a.EmpID == id).ToList());
         }
         public List<NEXT_OF_KIN2> NOK2()
         {
+
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["NEXT_OF_KIN2"] = db.NEXT_OF_KIN2.Where(a => a.EmpID == id).ToList().Count();
+                db.NEXT_OF_KIN2.Where(a => a.EmpID == id).ToList();
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.NEXT_OF_KIN2.Where(a => a.EmpID == id).ToList());
         }
         public List<OTHER_RELATED_COURSES_ATTENDED> other_related_courses()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["OTHER_RELATED_COURSES_ATTENDED"] = db.OTHER_RELATED_COURSES_ATTENDED.Where(a => a.EmpID == id).ToList().Count();
+                db.OTHER_RELATED_COURSES_ATTENDED.Where(a => a.EmpID == id).ToList();
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.OTHER_RELATED_COURSES_ATTENDED.Where(a => a.EmpID == id).ToList());
         }
         public List<FAMILY_INFORMATION> familyinfo()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+                TempData["FAMILY_INFORMATION"] = db.FAMILY_INFORMATION.Where(a => a.EmpID == id).ToList().Count();
+                db.FAMILY_INFORMATION.Where(a => a.EmpID == id).ToList();
+            }
+            catch (Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.FAMILY_INFORMATION.Where(a => a.EmpID == id).ToList());
         }
 
