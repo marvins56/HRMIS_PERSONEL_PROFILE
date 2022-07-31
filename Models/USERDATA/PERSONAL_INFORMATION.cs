@@ -15,14 +15,17 @@ namespace HRMIS_PERSONEL_PROFILE.Models
     {
         [Display(Name = "File Number")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "File Number field required")]
+        [MinLength(4, ErrorMessage = "invalid File Number length")]
         public string FileNo { get; set; }
 
         [Display(Name = "NIN ")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "NIN field required")]
+        [MinLength(13,ErrorMessage ="invalid nin length")]
         public string NIN { get; set; }
 
         [Display(Name = "Security Passcode")]
         [Required(AllowEmptyStrings = false, ErrorMessage = "Passcode field required")]
+        [MinLength(5, ErrorMessage = "invalid nin length")]
         public string Passcode { get; set; }
     }
 

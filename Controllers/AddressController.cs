@@ -261,11 +261,9 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             
          int userid = Convert.ToInt32(Session["userid"]);
 
-            var Passcode = db.PERSONAL_INFORMATION.Where(a => a.EmpID.Equals(userid)).Select(a => a.Passcode).FirstOrDefault();
-
-
             try
             {
+                var Passcode = db.PERSONAL_INFORMATION.Where(a => a.EmpID.Equals(userid)).Select(a => a.Passcode).FirstOrDefault();
                 if (Passcode == passcodes.Passcode)
                 {
                     TempData["success"] = "verified";
@@ -345,7 +343,20 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         public List<PERSONAL_INFORMATION> Get_personal_info()
         {
             int id = Convert.ToInt32(Session["userid"]);
+            try
+            {
+               
+             db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList();
+               
+            }
+            catch(Exception e)
+            {
+                TempData["databaseerror"] = e.Message;
+            }
+
             return (db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList());
+
+           
         }
         public List<HOME_ADDRESS> Get_HomeAddress()
         {
