@@ -343,8 +343,21 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         public List<PERSONAL_INFORMATION> Get_personal_info()
         {
             int id = Convert.ToInt32(Session["userid"]);
+
             try
             {
+                //picking data from diffrent tables using ids (inner join
+                //RANK
+                var rankid = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.RankID).ToList();
+
+                int id2 = Convert.ToInt32(rankid);
+             
+                TempData["rankname"] = db.Ranks.Where(a => a.RankID == id2).Select(a => a.Rank1);
+                //NATIONALITY
+                var Nationalityid = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.NationalityID);
+                int id3 = Convert.ToInt32(Nationalityid);
+                TempData["Nationalityname"] = db.Nationalities.Where(a => a.NationalityID == id3).Select(a => a.Nationality1).ToList(); ;
+
                 TempData["PERSONAL_INFORMATION"] = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList().Count();
                 db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList();
                
