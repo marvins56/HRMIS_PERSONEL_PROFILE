@@ -1,5 +1,6 @@
 ﻿@using HRMIS_PERSONEL_PROFILE.viewmodel
 @model userdetails
+
 @if (Session["userid"] != null)
 {
 
@@ -226,16 +227,7 @@
                                     <div class="col font-weight-bold text-uppercase ">HomeAddressID</div>
                                     <div class="col ">@item2.HomeAddressID)</div>
                                 </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item2.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item2.FNumber</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Village</div>
                                     <div class="col ">@item2.Village</div>
@@ -248,6 +240,14 @@
                                     <div class="col font-weight-bold text-uppercase">Subcounty</div>
                                     <div class="col ">@item2.Subcounty</div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">County</div>
+                                    <div class="col ">@item2.County</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">District</div>
+                                    <div class="col ">@TempData["disctrictnames"]</div>
+                                </div>
                             </div>
                         </div>
                         <div class=" col-sm align-items-start">
@@ -257,14 +257,7 @@
                             <div>
 
 
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">County</div>
-                                    <div class="col ">@item2.County</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DistrictID</div>
-                                    <div class="col ">@item2.DistrictID</div>
-                                </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Town</div>
                                     <div class="col ">@item2.Town</div>
@@ -281,7 +274,15 @@
                                     <div class="col font-weight-bold text-uppercase">FaxNo</div>
                                     <div class="col ">@item2.FaxNo</div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
+                                    <div class="col ">@item2.RecordedBy</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
+                                    <div class="col ">@item2.DateRecorded</div>
 
+                                </div>
 
                             </div>
                         </div>
@@ -290,15 +291,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#tools" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
-                                    <div class="col font-weight-bold text-uppercase">@item2.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
-                                    <div class="col font-weight-bold text-uppercase">@item2.DateRecorded</div>
 
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">MobilePhone</div>
                                     <div class="col">@item2.MobilePhone</div>
@@ -378,8 +371,8 @@
                                     <div class="col ">@item7.County</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DistrictID</div>
-                                    <div class="col ">@item7.DistrictID</div>
+                                    <div class="col font-weight-bold text-uppercase">District</div>
+                                    <div class="col ">@TempData["districtname"]</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Town</div>
@@ -1319,8 +1312,8 @@
                                     <div class="col ">@item8.IPPSNO</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">SalaryScaleID</div>
-                                    <div class="col ">@item8.SalaryScaleID</div>
+                                    <div class="col font-weight-bold text-uppercase">SalaryScale</div>
+                                    <div class="col ">@TempData["salaryscale"]</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">MonthlySalary</div>
@@ -1347,16 +1340,17 @@
                                     <div class="col ">@item8.DateRecorded</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">AccountTypeID</div>
-                                    <div class="col ">@item8.AccountTypeID</div>
+                                    <div class="col font-weight-bold text-uppercase">AccountType</div>
+                                    <div class="col ">@TempData["accounttypename"]</div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Bank</div>
+                                    <div class="col ">@TempData["bankname"]</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">BankID</div>
-                                    <div class="col ">@item8.BankID</div>
+                                    <div class="col font-weight-bold text-uppercase">BranchID</div>
+                                    <div class="col ">@TempData["branchname"]</div>
                                 </div>
 
                             </div>
@@ -1367,10 +1361,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">BranchID</div>
-                                    <div class="col ">@item8.BranchID</div>
-                                </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">TINNO</div>
                                     <div class="col ">@item8.TINNO</div>
@@ -1476,8 +1467,8 @@
                                     <div class="col ">@item8.County</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DistrictID</div>
-                                    <div class="col ">@item8.DistrictID</div>
+                                    <div class="col font-weight-bold text-uppercase">District</div>
+                                    <div class="col ">@TempData["districtname2"]</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Address</div>
@@ -1595,7 +1586,7 @@
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DistrictID</div>
-                                    <div class="col ">@item8.DistrictID</div>
+                                    <div class="col ">@TempData["districtname3"]</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Address</div>
@@ -1768,12 +1759,12 @@
                                     <div class="col font-weight-bold text-uppercase">LanguageCategory</div>
                                     <div class="col ">@item8.LanguageCategory</div>
                                 </div>
+
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">LangID</div>
-                                    <div class="col ">@item8.LangID</div>
+                                    <div class="col font-weight-bold text-uppercase">Language</div>
+                                    <div class="col ">@ViewBag.languagename</div>
                                 </div>
                             </div>
-
                         </div>
                         <div class=" col-sm align-items-start">
                             <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
@@ -1826,12 +1817,12 @@ else
 {
 
 <script>
-        swal({
-            title: "INVALID SESSIONS",
-            text: "ACCESS DENIED",
-            icon: "error",
-            button: "OK",
-        });
+    swal({
+        title: "INVALID SESSIONS",
+        text: "ACCESS DENIED",
+        icon: "error",
+        button: "OK",
+    });
 
 </script>
 

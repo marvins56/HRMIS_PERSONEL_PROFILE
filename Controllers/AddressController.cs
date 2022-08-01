@@ -348,15 +348,16 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             {
                 //picking data from diffrent tables using ids (inner join
                 //RANK
-                var rankid = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.RankID).ToList();
-
-                int id2 = Convert.ToInt32(rankid);
-             
-                TempData["rankname"] = db.Ranks.Where(a => a.RankID == id2).Select(a => a.Rank1);
+                var rankid = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.RankID).FirstOrDefault();
+                int id2 = Convert.ToInt32(rankid);             
+                var rankname = db.Ranks.Where(a => a.RankID.Equals(id2)).Select(a => a.Rank1).FirstOrDefault();
+                TempData["rankname"] = rankname;
                 //NATIONALITY
-                var Nationalityid = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.NationalityID);
+                var Nationalityid = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.NationalityID).FirstOrDefault();
                 int id3 = Convert.ToInt32(Nationalityid);
-                TempData["Nationalityname"] = db.Nationalities.Where(a => a.NationalityID == id3).Select(a => a.Nationality1).ToList(); ;
+              
+             var nationalname = db.Nationalities.Where(a => a.NationalityID.Equals(id3)).Select(a => a.Nationality1).FirstOrDefault(); ;
+                TempData["Nationalityname"] = nationalname;
 
                 TempData["PERSONAL_INFORMATION"] = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList().Count();
                 db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList();
@@ -376,6 +377,12 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             int id = Convert.ToInt32(Session["userid"]);
             try
             {
+                //home
+                var district = db.HOME_ADDRESS.Where(a => a.EmpID == id).Select(a => a.DistrictID).FirstOrDefault();
+                int id13 = Convert.ToInt32(district);
+                var disctrictnames = db.Districts.Where(a => a.DistrictID.Equals(id13)).Select(a => a.District1).FirstOrDefault();
+                TempData["disctrictnames"] = disctrictnames;
+
                 TempData["HOME_ADDRESS"] = db.HOME_ADDRESS.Where(a => a.EmpID == id).ToList().Count();
                 db.HOME_ADDRESS.Where(a => a.EmpID == id).ToList();
 
@@ -440,6 +447,17 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             int id = Convert.ToInt32(Session["userid"]);
             try
             {
+                //picking data from diffrent tables using ids (inner join
+                //DISTRICT
+                var districtid = db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == id).Select(a => a.DistrictID).FirstOrDefault();
+
+                int id4 = Convert.ToInt32(districtid);
+
+                var districtname = db.Districts.Where(a => a.DistrictID.Equals(id4)).Select(a => a.District1).FirstOrDefault();
+                TempData["districtname"] = districtname;
+
+
+
                 TempData["PHYSICAL_ADDRESSES"] = db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == id).ToList().Count();
                 db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == id).ToList();
 
@@ -504,6 +522,13 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             int id = Convert.ToInt32(Session["userid"]);
             try
             {
+                //language
+                var langid = db.LANGUAGES_PROFFECIENCY.Where(a => a.EmpID == id).Select(a => a.LangID).FirstOrDefault();
+                int id12 = Convert.ToInt32(langid);
+                var langname = db.Languages.Where(a => a.LangID.Equals(id12)).Select(a => a.Language1).FirstOrDefault();
+                ViewBag.languagename = langname;
+                //var result = db.Database.ExecuteSqlCommand("SELECT  Languages.Language  FROM LANGUAGES_PROFFECIENCY INNER JOIN Languages ON LANGUAGES_PROFFECIENCY.LangID = Languages.LangID where EmpID ='"+id+"' ");
+                //TempData["result"] = result;
                 TempData["LANGUAGES_PROFFECIENCY"] = db.LANGUAGES_PROFFECIENCY.Where(a => a.EmpID == id).ToList().Count();
                 db.LANGUAGES_PROFFECIENCY.Where(a => a.EmpID == id).ToList();
             }
@@ -548,7 +573,32 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         {
             int id = Convert.ToInt32(Session["userid"]);
             try
-            {
+            { //picking data from diffrent tables using ids (inner join
+                //salaryscale
+                var bankid = db.PAY_AND_WELFARE.Where(a => a.EmpID == id).Select(a => a.BankID).FirstOrDefault();
+                int id5 = Convert.ToInt32(bankid);
+                var bankname = db.Banks.Where(a => a.BankID.Equals(id5)).Select(a => a.Bank1).FirstOrDefault();
+                TempData["bankname"] = bankname;
+
+                //salaryscale
+                var salaryid = db.PAY_AND_WELFARE.Where(a => a.EmpID == id).Select(a => a.SalaryScaleID).FirstOrDefault();
+                int id6 = Convert.ToInt32(salaryid);
+                var salaryscale = db.SalaryScales.Where(a => a.SalaryScaleID.Equals(id6)).Select(a => a.Scale).FirstOrDefault();
+                TempData["salaryscale"] = salaryscale;
+
+                //account type
+                var accounttypeid = db.PAY_AND_WELFARE.Where(a => a.EmpID == id).Select(a => a.AccountTypeID).FirstOrDefault();
+                int id7 = Convert.ToInt32(accounttypeid);
+                var accounttypename = db.AccountTypes.Where(a => a.AccountTypeID.Equals(id7)).Select(a => a.AccountType1).FirstOrDefault();
+                TempData["accounttypename"] = accounttypename;
+
+                //account type
+                var branchid = db.PAY_AND_WELFARE.Where(a => a.EmpID == id).Select(a => a.BranchID).FirstOrDefault();
+                int id8 = Convert.ToInt32(branchid);
+                var branchname = db.BankBranches.Where(a => a.BranchID.Equals(id8)).Select(a => a.Branch).FirstOrDefault();
+                TempData["branchname"] = branchname;
+
+
                 TempData["PAY_AND_WELFARE"] = db.PAY_AND_WELFARE.Where(a => a.EmpID == id).ToList().Count();
                 db.PAY_AND_WELFARE.Where(a => a.EmpID == id).ToList();
             }
@@ -564,6 +614,13 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             int id = Convert.ToInt32(Session["userid"]);
             try
             {
+                //DISTRICT
+                var districtid = db.NEXT_OF_KIN1.Where(a => a.EmpID == id).Select(a => a.DistrictID).FirstOrDefault();
+
+                int id10 = Convert.ToInt32(districtid);
+
+                var districtname2 = db.Districts.Where(a => a.DistrictID.Equals(id10)).Select(a => a.District1).FirstOrDefault();
+                TempData["districtname2"] = districtname2;
                 TempData["NEXT_OF_KIN1"] = db.NEXT_OF_KIN1.Where(a => a.EmpID == id).ToList().Count();
                 db.NEXT_OF_KIN1.Where(a => a.EmpID == id).ToList();
             }
@@ -580,6 +637,13 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             int id = Convert.ToInt32(Session["userid"]);
             try
             {
+                //DISTRICT
+                var districtid = db.NEXT_OF_KIN2.Where(a => a.EmpID == id).Select(a => a.DistrictID).FirstOrDefault();
+
+                int id11 = Convert.ToInt32(districtid);
+
+                var districtname3 = db.Districts.Where(a => a.DistrictID.Equals(id11)).Select(a => a.District1).FirstOrDefault();
+                TempData["districtname3"] = districtname3;
                 TempData["NEXT_OF_KIN2"] = db.NEXT_OF_KIN2.Where(a => a.EmpID == id).ToList().Count();
                 db.NEXT_OF_KIN2.Where(a => a.EmpID == id).ToList();
             }
