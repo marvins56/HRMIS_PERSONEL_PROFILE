@@ -41,7 +41,6 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
                 if(empid > 0)
                 {
 
-
                     var NIN = db.PERSONAL_INFORMATION.Where(a => a.EmpID == empid).Select(a => a.NIN).FirstOrDefault();
                     var userninid = db.PERSONAL_INFORMATION.Where(a => a.NIN == users.NIN).Select(a => a.EmpID).FirstOrDefault();
 
