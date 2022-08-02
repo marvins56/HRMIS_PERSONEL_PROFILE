@@ -1,12 +1,12 @@
 ﻿@using HRMIS_PERSONEL_PROFILE.viewmodel
 @model userdetails
-@{ 
+@{
 
     var userDt = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
     DateTime dtByUser = DateTime.Parse(userDt).Date;
     var shortTm = dtByUser.ToLongTimeString();
 }
-@if (Session["userid"] != null || Session["userid1"] != null  )
+@if (Session["userid"] != null || Session["userid1"] != null)
 {
 
     if (TempData["success"] != null)
@@ -39,7 +39,11 @@
         </script>
 
     }
-
+    <style type="text/css" media="print">
+        * {
+            display: none;
+        }
+    </style>
 
     <!doctype html>
     <html lang="en">
@@ -57,6 +61,7 @@
         <link href="~/Content/features.css" rel="stylesheet">
     </head>
     <body>
+
         <main class="card p-20">
             <!--PERSONAL  INFORMATION-->
             <div class="container " id="hanging-icons">
@@ -1562,10 +1567,10 @@
             })(window);
         </script>
         <!--script for disabling the keyboard-->
-        <script >
+        <script>
             document.onkeydown = function (ev) {
-    var a;
-    ev = window.event;
+                var a;
+                ev = window.event;
                 if (typeof ev == "undefined") {
                     swal({
                         title: "ACCESS DENIED",
@@ -1574,36 +1579,36 @@
                         button: "OK",
                     });
 
-    }
-    a = ev.keyCode;
+                }
+                a = ev.keyCode;
                 swal({
                     title: "ACCESS DENIED",
                     text: "KEYBOARD DISABLED",
                     icon: "error",
                     button: "OK",
                 });
-    return false;
-}
-document.onkeyup = function (ev) {
-    var charCode;
-    if (typeof ev == "undefined") {
-        ev = window.event;
-        swal({
-            title: "ACCESS DENIED",
-            text: "KEYBOARD DISABLED",
-            icon: "error",
-            button: "OK",
-        });
-    } else {
-        swal({
-            title: "ACCESS DENIED",
-            text: "KEYBOARD DISABLED",
-            icon: "error",
-            button: "OK",
-        });
-    }
-    return false;
-}
+                return false;
+            }
+            document.onkeyup = function (ev) {
+                var charCode;
+                if (typeof ev == "undefined") {
+                    ev = window.event;
+                    swal({
+                        title: "ACCESS DENIED",
+                        text: "KEYBOARD DISABLED",
+                        icon: "error",
+                        button: "OK",
+                    });
+                } else {
+                    swal({
+                        title: "ACCESS DENIED",
+                        text: "KEYBOARD DISABLED",
+                        icon: "error",
+                        button: "OK",
+                    });
+                }
+                return false;
+            }
         </script>
 
         <!--script for disabling clicking-->
@@ -1650,6 +1655,7 @@ document.onkeyup = function (ev) {
                 } catch (err) {
                 }
         </script>
+
     </body>
 </html>
 }
