@@ -876,7 +876,12 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
             return (db.FAMILY_INFORMATION.Where(a => a.EmpID == id).ToList());
         }
 
-
+        public ActionResult SignOut()
+        {
+            Session.Clear();
+           
+            return RedirectToAction("GetUserDetails", "Address"); 
+        }
 
 
 

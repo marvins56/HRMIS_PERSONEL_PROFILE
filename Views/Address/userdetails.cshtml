@@ -61,11 +61,33 @@
         <link href="~/Content/features.css" rel="stylesheet">
     </head>
     <body>
-
+        <div id="resultLoading" style="display: none; width: 100%; height: 100%; position: fixed; z-index: 10000; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto;">
+            <div style="width: 340px; height: 200px; text-align: center; position: fixed; top: 0px; left: 0px; right: 0px; bottom: 0px; margin: auto; z-index: 10; color: rgb(255, 255, 255);">
+                <div class="uil-default-css">
+                    <div class="loader">Loading...</div>
+                </div>
+                <div class="resultLoading" style="display: block; font-size: 18px; font-weight: 300;">&nbsp;</div>
+            </div>
+            <div style="background: rgb(0, 0, 0); opacity: 0.6; width: 100%; height: 100%; position: absolute; top: 0px;"></div>
+        </div>
         <main class="card p-20">
             <!--PERSONAL  INFORMATION-->
             <div class="container " id="hanging-icons">
-                <h4 class=" border-bottom pb-3 pt-2" style="text-align:center">PERSONAL_INFORMATION</h4>
+                <h4 class=" border-bottom pb-3 pt-2" style="text-align:center">
+                    PERSONAL_INFORMATION   
+                    <span style="float:right">
+                        @using (Html.BeginForm("SignOut", "Address", FormMethod.Post, new { id = "logoutForm" }))
+                        {
+                            <a class="dropdown-item" href="javascript:document.getElementById('logoutForm').submit()">
+
+                                <i class="fa-solid fa-arrow-right-from-bracket" title="SignOut"></i>
+
+                            </a>
+
+                        }
+                    </span>
+                </h4>
+               
                 <button type="button" class="btn btn-primary " style="float: right;">
                     Results <span class="badge badge-light">@TempData["PERSONAL_INFORMATION"]</span>
                     <span class="sr-only">unread messages</span>
@@ -1655,8 +1677,7 @@
                 } catch (err) {
                 }
         </script>
-
-    </body>
+   
 </html>
 }
 else
