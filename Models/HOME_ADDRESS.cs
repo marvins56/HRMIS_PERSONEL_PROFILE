@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class HOME_ADDRESS
     {
         public int HomeAddressID { get; set; }
@@ -29,6 +30,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string MobilePhone { get; set; }
         public string FixedTelephone { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }

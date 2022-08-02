@@ -1,7 +1,12 @@
 ﻿@using HRMIS_PERSONEL_PROFILE.viewmodel
 @model userdetails
+@{ 
 
-@if (Session["userid"] != null)
+    var userDt = DateTime.Now.ToString("MM/dd/yyyy hh:mm tt");
+    DateTime dtByUser = DateTime.Parse(userDt).Date;
+    var shortTm = dtByUser.ToLongTimeString();
+}
+@if (Session["userid"] != null || Session["userid1"] != null  )
 {
 
     if (TempData["success"] != null)
@@ -90,16 +95,6 @@
                                     <div class="col ">@item.MiddleName</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">NIN</div>
-                                    <div class="col ">@item.NIN</div>
-                                </div>
-                                <div class="row p-2 ">
-
-                                    <div class="col font-weight-bold text-uppercase">Category</div>
-                                    <div class="col ">@item.Category</div>
-
-                                </div>
-                                <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">LastName</div>
                                     <div class="col ">@item.LastName</div>
                                 </div>
@@ -108,7 +103,14 @@
                                     <div class="col font-weight-bold text-uppercase">Gender</div>
                                     <div class="col ">@item.Gender</div>
                                 </div>
-
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">NIN</div>
+                                    <div class="col ">@item.NIN</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Nationality</div>
+                                    <div class="col">@TempData["Nationalityname"]</div>
+                                </div>
                             </div>
                         </div>
                         <div class=" col-sm align-items-start">
@@ -116,15 +118,6 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Status</div>
-                                    <div class="col ">@item.Status</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">SerialNo</div>
-                                    <div class="col ">@item.SerialNo</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Religion</div>
                                     <div class="col ">@item.Religion</div>
@@ -145,11 +138,18 @@
                                     <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
                                     <div class="col ">@item.Placeofbirth</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">MaritalStatus</div>
-                                    <div class="col ">@item.MaritalStatus</div>
+                                <div class="row p-2 ">
+                                    <div class="col font-weight-bold text-uppercase">Category</div>
+                                    <div class="col ">@item.Category</div>
                                 </div>
-
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Status</div>
+                                    <div class="col ">@item.Status</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">SerialNo</div>
+                                    <div class="col ">@item.SerialNo</div>
+                                </div>
                             </div>
                         </div>
                         <div class=" col-sm align-items-start">
@@ -157,11 +157,19 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#tools" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Nationality</div>
-                                    <div class="col">@TempData["Nationalityname"]</div>
-                                </div>
 
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">MaritalStatus</div>
+                                    <div class="col ">@item.MaritalStatus</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">TypeOfMarriage</div>
+                                    <div class="col ">@item.TypeOfMarriage</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">DateOfMarriage</div>
+                                    <div class="col ">@item.DateOfMarriage</div>
+                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">WarrantCardNo</div>
                                     <div class="col ">@item.WarrantCardNo</div>
@@ -182,14 +190,7 @@
                                     <div class="col font-weight-bold text-uppercase">PassportExpiryDate</div>
                                     <div class="col ">@item.PassportExpiryDate</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">TypeOfMarriage</div>
-                                    <div class="col ">@item.TypeOfMarriage</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateOfMarriage</div>
-                                    <div class="col ">@item.DateOfMarriage</div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -223,18 +224,10 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase ">HomeAddressID</div>
-                                    <div class="col ">@item2.HomeAddressID)</div>
-                                </div>
 
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Village</div>
-                                    <div class="col ">@item2.Village</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Parish</div>
-                                    <div class="col">@item2.Parish</div>
+                                    <div class="col font-weight-bold text-uppercase">District</div>
+                                    <div class="col ">@TempData["disctrictnames"]</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Subcounty</div>
@@ -244,9 +237,18 @@
                                     <div class="col font-weight-bold text-uppercase">County</div>
                                     <div class="col ">@item2.County</div>
                                 </div>
+
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">District</div>
-                                    <div class="col ">@TempData["disctrictnames"]</div>
+                                    <div class="col font-weight-bold text-uppercase">Town</div>
+                                    <div class="col ">@item2.Town</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Parish</div>
+                                    <div class="col">@item2.Parish</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Village</div>
+                                    <div class="col ">@item2.Village</div>
                                 </div>
                             </div>
                         </div>
@@ -255,35 +257,30 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-
-
-
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Town</div>
-                                    <div class="col ">@item2.Town</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">PostalAddress</div>
-                                    <div class="col ">@item2.PostalAddress</div>
+                                    <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
+                                    <div class="col ">@TempData["disctrictnames"]</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Email</div>
                                     <div class="col ">@item2.Email</div>
                                 </div>
                                 <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">MobilePhone</div>
+                                    <div class="col">@item2.MobilePhone</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">FixedTelephone</div>
+                                    <div class="col ">@item2.FixedTelephone</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">PostalAddress</div>
+                                    <div class="col ">@item2.PostalAddress</div>
+                                </div>
+                                <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">FaxNo</div>
                                     <div class="col ">@item2.FaxNo</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
-                                    <div class="col ">@item2.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
-                                    <div class="col ">@item2.DateRecorded</div>
-
-                                </div>
-
                             </div>
                         </div>
                         <div class=" col-sm align-items-start">
@@ -293,13 +290,11 @@
                             <div>
 
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">MobilePhone</div>
-                                    <div class="col">@item2.MobilePhone</div>
+                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
+                                    <div class="col ">@item2.DateRecorded</div>
+
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FixedTelephone</div>
-                                    <div class="col ">@item2.FixedTelephone</div>
-                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -333,69 +328,32 @@
                             </div>
                             <div>
                                 <div class="row p-2">
-                                    <div class="col ">PhysicalAddressID</div>
-                                    <div class="col ">@item7.PhysicalAddressID</div>
+                                    <div class="col font-weight-bold text-uppercase">District</div>
+                                    <div class="col ">@TempData["districtname"]</div>
                                 </div>
-                                <div class="row p-2 ">
-
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item7.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item7.FNumber</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Village</div>
-                                    <div class="col ">@item7.Village</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Parish</div>
-                                    <div class="col ">@item7.Parish</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Subcounty</div>
-                                    <div class="col ">@item7.Subcounty</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class=" col-sm align-items-start">
-                            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                                <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
-                            </div>
-                            <div>
-
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">County</div>
                                     <div class="col ">@item7.County</div>
                                 </div>
+
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">District</div>
-                                    <div class="col ">@TempData["districtname"]</div>
+                                    <div class="col font-weight-bold text-uppercase">Subcounty</div>
+                                    <div class="col ">@item7.Subcounty</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Town</div>
                                     <div class="col f">@item7.Town</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">PostalAddress</div>
-                                    <div class="col ">@item7.PostalAddress</div>
+                                    <div class="col font-weight-bold text-uppercase">Parish</div>
+                                    <div class="col ">@item7.Parish</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Email</div>
-                                    <div class="col ">@item7.Email</div>
+                                    <div class="col font-weight-bold text-uppercase">Village</div>
+                                    <div class="col ">@item7.Village</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FaxNo</div>
-                                    <div class="col ">@item7.FaxNo</div>
-                                </div>
-
                             </div>
-
-
                         </div>
-
                         <div class=" col-sm align-items-start">
                             <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
@@ -403,11 +361,11 @@
                             <div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
-                                    <div class="col ">@item7.RecordedBy</div>
+                                    <div class="col ">@TempData["districtname"]</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
-                                    <div class="col ">@item7.DateRecorded</div>
+                                    <div class="col font-weight-bold text-uppercase">Email</div>
+                                    <div class="col ">@item7.Email</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">MobilePhone</div>
@@ -416,6 +374,29 @@
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">FixedTelephone</div>
                                     <div class="col ">@item7.FixedTelephone</div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">PostalAddress</div>
+                                    <div class="col ">@item7.PostalAddress</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">FaxNo</div>
+                                    <div class="col ">@item7.FaxNo</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class=" col-sm align-items-start">
+                            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                                <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
+                            </div>
+                            <div>
+
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
+                                    <div class="col ">@item7.DateRecorded</div>
                                 </div>
                             </div>
                         </div>
@@ -452,30 +433,29 @@
                             </div>
                             <div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase ">FeatureID</div>
-                                    <div class="col ">@item8.FeatureID</div>
-                                </div>
-                                <div class="row p-2 ">
-
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">ColourOfEye</div>
-                                    <div class="col ">@item8.ColourOfEye</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">ColourOfHair</div>
-                                    <div class="col ">@item8.ColourOfHair</div>
-                                </div>
-                                <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Height</div>
                                     <div class="col ">@item8.Height</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Weight</div>
+                                    <div class="col ">@item8.Weight</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">ShoeSize</div>
+                                    <div class="col ">@item8.ShoeSize</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">WaistSize</div>
+                                    <div class="col ">@item8.WaistSize</div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">DressSize</div>
+                                    <div class="col ">@item8.DressSize</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">HeadCapSize</div>
+                                    <div class="col ">@item8.HeadCapSize</div>
                                 </div>
                             </div>
                         </div>
@@ -485,12 +465,8 @@
                             </div>
                             <div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Weight</div>
-                                    <div class="col ">@item8.Weight</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DressSize</div>
-                                    <div class="col ">@item8.DressSize</div>
+                                    <div class="col font-weight-bold text-uppercase">TrouserLength</div>
+                                    <div class="col ">@item8.TrouserLength</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">SkirtLength</div>
@@ -501,12 +477,12 @@
                                     <div class="col ">@item8.ShirtCollarSize</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">TrouserLength</div>
-                                    <div class="col ">@item8.TrouserLength</div>
+                                    <div class="col font-weight-bold text-uppercase">Complexion</div>
+                                    <div class="col ">@item8.Complexion</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">WaistSize</div>
-                                    <div class="col ">@item8.WaistSize</div>
+                                    <div class="col font-weight-bold text-uppercase">DistinguishingFeatures</div>
+                                    <div class="col ">@item8.DistinguishingFeatures</div>
                                 </div>
                             </div>
 
@@ -518,25 +494,16 @@
                             </div>
                             <div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">ShoeSize</div>
-                                    <div class="col ">@item8.ShoeSize</div>
+                                    <div class="col font-weight-bold text-uppercase">ColourOfEye</div>
+                                    <div class="col ">@item8.ColourOfEye</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">HeadCapSize</div>
-                                    <div class="col ">@item8.HeadCapSize</div>
+                                    <div class="col font-weight-bold text-uppercase">ColourOfHair</div>
+                                    <div class="col ">@item8.ColourOfHair</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Complexion</div>
-                                    <div class="col ">@item8.Complexion</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DistinguishingFeatures</div>
-                                    <div class="col ">@item8.DistinguishingFeatures</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
+
+
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col ">@item8.DateRecorded</div>
@@ -578,35 +545,31 @@
                             </div>
                             <div>
                                 <div class="row p-2">
-                                    <div class="col ">EmptStatusID</div>
-                                    <div class="col ">@item3.EmptStatusID</div>
-                                </div>
-                                <div class="row p-2 ">
-
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item3.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item3.FNumber</div>
-                                </div>
-                                <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">EmploymentStatus</div>
                                     <div class="col ">@item3.EmploymentStatus</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateOfEnlistment</div>
-                                    <div class="col ">@item3.DateOfEnlistment</div>
+                                    <div class="col font-weight-bold text-uppercase">TypeOfEnlistment</div>
+                                    <div class="col ">@item3.TypeOfEnlistment</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">PlaceOfEnlistment</div>
                                     <div class="col ">@item3.PlaceOfEnlistment</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">TypeOfEnlistment</div>
-                                    <div class="col ">@item3.TypeOfEnlistment</div>
+                                    <div class="col font-weight-bold text-uppercase">DateOfEnlistment</div>
+                                    <div class="col ">@item3.DateOfEnlistment</div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">PlaceOfPosting</div>
+                                    <div class="col ">@item3.PlaceOfPosting</div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">DateOfPosting</div>
+                                    <div class="col ">@item3.DateOfPosting</div>
+                                </div>
+
                             </div>
                         </div>
                         <div class=" col-sm align-items-start">
@@ -614,6 +577,8 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
+
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DurationOfTraining</div>
                                     <div class="col ">@item3.DurationOfTraining</div>
@@ -622,18 +587,7 @@
                                     <div class="col font-weight-bold text-uppercase">Duration</div>
                                     <div class="col ">@item3.Duration</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateOfPosting</div>
-                                    <div class="col ">@item3.DateOfPosting</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">PlaceOfPosting</div>
-                                    <div class="col ">@item3.PlaceOfPosting</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
-                                    <div class="col ">@item3.RecordedBy</div>
-                                </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col ">@item3.DateRecorded</div>
@@ -674,24 +628,6 @@
                             </div>
                             <div>
                                 <div class="row p-2">
-                                    <div class="col ">EducationID</div>
-                                    <div class="col font-weight-bold text-uppercase">@item4.EducationID</div>
-                                </div>
-                                <div class="row p-2 ">
-
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item4.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item4.FNumber</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RankID</div>
-                                    <div class="col ">@item4.RankID</div>
-                                </div>
-                                <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Qualification</div>
                                     <div class="col ">@item4.Qualification</div>
                                 </div>
@@ -699,6 +635,19 @@
                                     <div class="col font-weight-bold text-uppercase">Discipline</div>
                                     <div class="col ">@item4.Discipline</div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">School</div>
+                                    <div class="col ">@item4.School</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">From</div>
+                                    <div class="col ">@item4.From</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">To</div>
+                                    <div class="col ">@item4.To</div>
+                                </div>
+
                             </div>
                         </div>
                         <div class=" col-sm align-items-start">
@@ -708,24 +657,6 @@
                             <div>
 
 
-                            </div>
-
-                            <div class="row p-2">
-                                <div class="col font-weight-bold text-uppercase">From</div>
-                                <div class="col ">@item4.From</div>
-                            </div>
-                            <div class="row p-2">
-                                <div class="col font-weight-bold text-uppercase">To</div>
-                                <div class="col ">@item4.To</div>
-                            </div>
-                            <div class="row p-2">
-                                <div class="col font-weight-bold text-uppercase">School</div>
-                                <div class="col ">@item4.School</div>
-                            </div>
-
-                            <div class="row p-2">
-                                <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
-                                <div class="col ">@item4.RecordedBy</div>
                             </div>
                             <div class="row p-2">
                                 <div class="col font-weight-bold text-uppercase">DateRecorded</div>
@@ -767,42 +698,6 @@
                             </div>
                             <div>
                                 <div class="row p-2">
-                                    <div class="col ">ORCID</div>
-                                    <div class="col ">@item8.ORCID</div>
-                                </div>
-                                <div class="row p-2 ">
-
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RankID</div>
-                                    <div class="col ">@item8.RankID</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">categoryType</div>
-                                    <div class="col ">@item8.categoryType</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">categoryName</div>
-                                    <div class="col ">@item8.categoryName</div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class=" col-sm align-items-start">
-                            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                                <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
-                            </div>
-                            <div>
-
-                                <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Institution</div>
                                     <div class="col ">@item8.Institution</div>
                                 </div>
@@ -818,9 +713,26 @@
                                     <div class="col font-weight-bold text-uppercase">To</div>
                                     <div class="col ">@item8.To</div>
                                 </div>
+
+
+
+
+                            </div>
+
+                        </div>
+                        <div class=" col-sm align-items-start">
+                            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
+                                <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
+                            </div>
+                            <div>
+
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
+                                    <div class="col font-weight-bold text-uppercase">categoryType</div>
+                                    <div class="col ">@item8.categoryType</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">categoryName</div>
+                                    <div class="col ">@item8.categoryName</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
@@ -861,24 +773,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col ">AwardID</div>
-                                    <div class="col font-weight-bold text-uppercase">@item5.AwardID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item5.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item5.FNumber</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RankID</div>
-                                    <div class="col ">@item5.RankID</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">NatureOfAward</div>
                                     <div class="col ">@item5.NatureOfAward</div>
@@ -894,19 +789,6 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item5.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
-                                    <div class="col ">@item5.DateRecorded</div>
-                                </div>
-
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
-                                    <div class="col ">@item5.RecordedBy</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col ">@item5.DateRecorded</div>
@@ -948,18 +830,8 @@
                             </div>
                             <div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DependantID</div>
-                                    <div class="col ">@item6.DependantID</div>
-                                </div>
-                                <div class="row p-2 ">
-
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item6.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item6.FNumber</div>
+                                    <div class="col font-weight-bold text-uppercase">NAME</div>
+                                    <div class="col ">@item6.Name</div>
                                 </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Relationship</div>
@@ -973,25 +845,13 @@
                                     <div class="col font-weight-bold text-uppercase">DateOfBirth</div>
                                     <div class="col ">@item6.DateOfBirth</div>
                                 </div>
-                            </div>
-                        </div>
-                        <div class=" col-sm align-items-start">
-                            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                                <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
-                            </div>
-                            <div>
-
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Placeofbirth</div>
-                                    <div class="col font-weight-bold text-uppercase">@item6.RecordedBy</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col font-weight-bold text-uppercase">@item6.DateRecorded</div>
                                 </div>
                             </div>
-
                         </div>
+
                     </div>
 
                 }
@@ -1024,20 +884,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase ">AccomodationID</div>
-                                    <div class="col ">@item8.AccomodationID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Type</div>
                                     <div class="col ">@item8.Type</div>
@@ -1047,9 +894,10 @@
                                     <div class="col ">@item8.TypeOfStructure</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
+                                    <div class="col font-weight-bold text-uppercase">BarracksName</div>
+                                    <div class="col ">@item8.BarracksName</div>
                                 </div>
+
                             </div>
                         </div>
                         <div class=" col-sm align-items-start">
@@ -1057,10 +905,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">BarracksName</div>
-                                    <div class="col ">@item8.BarracksName</div>
-                                </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">HouseNumber</div>
                                     <div class="col ">@item8.HouseNumber</div>
@@ -1104,20 +949,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">HealthID</div>
-                                    <div class="col ">@item8.HealthID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">PhysicalDisability</div>
                                     <div class="col ">@item8.PhysicalDisability</div>
@@ -1130,6 +962,14 @@
                                     <div class="col font-weight-bold text-uppercase">HowInflicated</div>
                                     <div class="col ">@item8.HowInflicated</div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">WhenInflicated</div>
+                                    <div class="col ">@item8.WhenInflicated</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">OnMedication</div>
+                                    <div class="col ">@item8.OnMedication</div>
+                                </div>
                             </div>
                         </div>
                         <div class=" col-sm align-items-start">
@@ -1137,10 +977,6 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">WhenInflicated</div>
-                                    <div class="col ">@item8.WhenInflicated</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">TerminalIllness</div>
                                     <div class="col ">@item8.TerminalIllness</div>
@@ -1154,33 +990,13 @@
                                     <div class="col ">@item8.DurationOfIllness</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">OnMedication</div>
-                                    <div class="col ">@item8.OnMedication</div>
-                                </div>
-
-                            </div>
-
-                        </div>
-                        <div class=" col-sm align-items-start">
-                            <div class="icon-square text-bg-light d-inline-flex align-items-center justify-content-center fs-4 flex-shrink-0 me-3">
-                                <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
-                            </div>
-                            <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col ">@item8.DateRecorded</div>
                                 </div>
                             </div>
 
                         </div>
+
                     </div>
 
                 }
@@ -1213,20 +1029,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">ParentID</div>
-                                    <div class="col ">@item8.ParentID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">NameOfFather</div>
                                     <div class="col ">@item8.NameOfFather</div>
@@ -1251,10 +1054,7 @@
                                     <div class="col font-weight-bold text-uppercase">MothersStatus</div>
                                     <div class="col ">@item8.MothersStatus</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col ">@item8.DateRecorded</div>
@@ -1293,24 +1093,12 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">WelfareID</div>
-                                    <div class="col ">@item8.WelfareID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">IPPSNO</div>
                                     <div class="col ">@item8.IPPSNO</div>
                                 </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">SalaryScale</div>
                                     <div class="col ">@TempData["salaryscale"]</div>
@@ -1319,6 +1107,12 @@
                                     <div class="col font-weight-bold text-uppercase">MonthlySalary</div>
                                     <div class="col ">@item8.MonthlySalary</div>
                                 </div>
+
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">TINNO</div>
+                                    <div class="col ">@item8.TINNO</div>
+                                </div>
                             </div>
                         </div>
 
@@ -1327,23 +1121,6 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">AccountNo</div>
-                                    <div class="col ">@item8.AccountNo</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">AccountTitle</div>
-                                    <div class="col ">@item8.AccountTitle</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
-                                    <div class="col ">@item8.DateRecorded</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">AccountType</div>
-                                    <div class="col ">@TempData["accounttypename"]</div>
-                                </div>
-
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Bank</div>
                                     <div class="col ">@TempData["bankname"]</div>
@@ -1352,6 +1129,21 @@
                                     <div class="col font-weight-bold text-uppercase">BranchID</div>
                                     <div class="col ">@TempData["branchname"]</div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">AccountNo</div>
+                                    <div class="col ">@item8.AccountNo</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">AccountTitle</div>
+                                    <div class="col ">@item8.AccountTitle</div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">AccountType</div>
+                                    <div class="col ">@TempData["accounttypename"]</div>
+                                </div>
+
+
 
                             </div>
 
@@ -1361,11 +1153,6 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">TINNO</div>
-                                    <div class="col ">@item8.TINNO</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">PayrollStatus</div>
                                     <div class="col ">@item8.PayrollStatus</div>
@@ -1374,10 +1161,7 @@
                                     <div class="col font-weight-bold text-uppercase">ReasonforInactive</div>
                                     <div class="col ">@item8.ReasonforInactive</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col ">@item8.DateRecorded</div>
@@ -1415,20 +1199,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col ">NextOfKin1ID</div>
-                                    <div class="col ">@item8.NextOfKin1ID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Name</div>
                                     <div class="col ">@item8.Name</div>
@@ -1437,6 +1208,16 @@
                                     <div class="col font-weight-bold text-uppercase">Relationship</div>
                                     <div class="col ">@item8.Relationship</div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">TelephoneNo</div>
+                                    <div class="col ">@item8.TelephoneNo</div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Address</div>
+                                    <div class="col ">@item8.Address</div>
+                                </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Village</div>
                                     <div class="col ">@item8.Village</div>
@@ -1470,10 +1251,6 @@
                                     <div class="col font-weight-bold text-uppercase">District</div>
                                     <div class="col ">@TempData["districtname2"]</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Address</div>
-                                    <div class="col ">@item8.Address</div>
-                                </div>
 
                             </div>
 
@@ -1483,19 +1260,6 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">TelephoneNo</div>
-                                    <div class="col ">@item8.TelephoneNo</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col ">@item8.DateRecorded</div>
@@ -1520,7 +1284,7 @@
             <!--NEXT_OF_KIN2-->
             <div class="container " id="hanging-icons">
                 <h4 class=" border-bottom pt-5 pb-3">
-                    NEXT_OF_KIN 2  DATA  <button type="button" class="btn btn-primary" style="float: right;">
+                    NEXT_OF_KIN 2 DATA   <button type="button" class="btn btn-primary" style="float: right;">
                         Results <span class="badge badge-light">@TempData["NEXT_OF_KIN2"]</span>
                         <span class="sr-only">unread messages</span>
                     </button>
@@ -1533,20 +1297,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col ">NextOfKin1ID</div>
-                                    <div class="col ">@item8.NextOfKin2ID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Name</div>
                                     <div class="col ">@item8.Name</div>
@@ -1555,6 +1306,16 @@
                                     <div class="col font-weight-bold text-uppercase">Relationship</div>
                                     <div class="col ">@item8.Relationship</div>
                                 </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">TelephoneNo</div>
+                                    <div class="col ">@item8.TelephoneNo</div>
+                                </div>
+
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">Address</div>
+                                    <div class="col ">@item8.Address</div>
+                                </div>
+
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Village</div>
                                     <div class="col ">@item8.Village</div>
@@ -1585,12 +1346,8 @@
                                     <div class="col ">@item8.County</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DistrictID</div>
+                                    <div class="col font-weight-bold text-uppercase">District</div>
                                     <div class="col ">@TempData["districtname3"]</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">Address</div>
-                                    <div class="col ">@item8.Address</div>
                                 </div>
 
                             </div>
@@ -1601,19 +1358,6 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">TelephoneNo</div>
-                                    <div class="col ">@item8.TelephoneNo</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">DateRecorded</div>
                                     <div class="col ">@item8.DateRecorded</div>
@@ -1621,6 +1365,7 @@
                             </div>
 
                         </div>
+
                     </div>
                 }
                 @{
@@ -1632,7 +1377,6 @@
                         </div>
                     }
                 }
-
             </div>
 
             <!--FAMILY_INFORMATION-->
@@ -1652,20 +1396,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col ">FamilyID</div>
-                                    <div class="col ">@item8.FamilyID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">SpouseName</div>
                                     <div class="col ">@item8.SpouseName</div>
@@ -1675,8 +1406,8 @@
                                     <div class="col ">@item8.SpouseDateOfBirth</div>
                                 </div>
                                 <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">ChildName</div>
-                                    <div class="col ">@item8.ChildName</div>
+                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
+                                    <div class="col ">@item8.DateRecorded</div>
                                 </div>
 
                             </div>
@@ -1688,6 +1419,10 @@
                             </div>
                             <div>
                                 <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">ChildName</div>
+                                    <div class="col ">@item8.ChildName</div>
+                                </div>
+                                <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Gender</div>
                                     <div class="col ">@item8.Gender</div>
                                 </div>
@@ -1695,14 +1430,8 @@
                                     <div class="col font-weight-bold text-uppercase">ChildDateOfBirth</div>
                                     <div class="col ">@item8.ChildDateOfBirth</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RecordedBy</div>
-                                    <div class="col ">@item8.RecordedBy</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
-                                    <div class="col ">@item8.DateRecorded</div>
-                                </div>
+
+
 
                             </div>
 
@@ -1737,24 +1466,7 @@
                                 <svg class="bi" width="1em" height="1em"><use xlink:href="#cpu-fill" /></svg>
                             </div>
                             <div>
-                                <div class="row p-2">
-                                    <div class="col ">LID</div>
-                                    <div class="col ">@item8.LID</div>
-                                </div>
-                                <div class="row p-2 ">
 
-                                    <div class="col font-weight-bold text-uppercase">EmpID</div>
-                                    <div class="col ">@item8.EmpID</div>
-
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">FNumber</div>
-                                    <div class="col ">@item8.FNumber</div>
-                                </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">RankID</div>
-                                    <div class="col ">@item8.RankID</div>
-                                </div>
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">LanguageCategory</div>
                                     <div class="col ">@item8.LanguageCategory</div>
@@ -1763,6 +1475,10 @@
                                 <div class="row p-2">
                                     <div class="col font-weight-bold text-uppercase">Language</div>
                                     <div class="col ">@ViewBag.languagename</div>
+                                </div>
+                                <div class="row p-2">
+                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
+                                    <div class="col ">@item8.DateRecorded</div>
                                 </div>
                             </div>
                         </div>
@@ -1783,10 +1499,7 @@
                                     <div class="col font-weight-bold text-uppercase">Speak</div>
                                     <div class="col ">@item8.Speak</div>
                                 </div>
-                                <div class="row p-2">
-                                    <div class="col font-weight-bold text-uppercase">DateRecorded</div>
-                                    <div class="col ">@item8.DateRecorded</div>
-                                </div>
+
 
                             </div>
 
@@ -1808,8 +1521,135 @@
         </main>
 
         <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
+        <script>
 
 
+            (function (global) {
+
+                if (typeof (global) === "undefined") {
+                    throw new Error("window is undefined");
+                }
+
+                var _hash = "!";
+                var noBackPlease = function () {
+                    global.location.href += "#";
+
+                    // Making sure we have the fruit available for juice (^__^)
+                    global.setTimeout(function () {
+                        global.location.href += "!";
+                    }, 50);
+                };
+
+                global.onhashchange = function () {
+                    if (global.location.hash !== _hash) {
+                        global.location.hash = _hash;
+                    }
+                };
+
+                global.onload = function () {
+                    noBackPlease();
+
+                    // Disables backspace on page except on input fields and textarea..
+                    document.body.onkeydown = function (e) {
+                        var elm = e.target.nodeName.toLowerCase();
+                        if (e.which === 8 && (elm !== 'input' && elm !== 'textarea')) {
+                            e.preventDefault();
+                        }
+                        // Stopping the event bubbling up the DOM tree...
+                        e.stopPropagation();
+                    };
+                }
+            })(window);
+        </script>
+        <!--script for disabling the keyboard-->
+        <script >
+            document.onkeydown = function (ev) {
+    var a;
+    ev = window.event;
+                if (typeof ev == "undefined") {
+                    swal({
+                        title: "ACCESS DENIED",
+                        text: "KEYBOARD DISABLED",
+                        icon: "error",
+                        button: "OK",
+                    });
+
+    }
+    a = ev.keyCode;
+                swal({
+                    title: "ACCESS DENIED",
+                    text: "KEYBOARD DISABLED",
+                    icon: "error",
+                    button: "OK",
+                });
+    return false;
+}
+document.onkeyup = function (ev) {
+    var charCode;
+    if (typeof ev == "undefined") {
+        ev = window.event;
+        swal({
+            title: "ACCESS DENIED",
+            text: "KEYBOARD DISABLED",
+            icon: "error",
+            button: "OK",
+        });
+    } else {
+        swal({
+            title: "ACCESS DENIED",
+            text: "KEYBOARD DISABLED",
+            icon: "error",
+            button: "OK",
+        });
+    }
+    return false;
+}
+        </script>
+
+        <!--script for disabling clicking-->
+        <script type="text/javascript">
+            var message = "Function Disabled!";
+            function clickIE4() {
+                if (event.button == 2) {
+                    swal({
+                        title: "ACCESS DENIED",
+                        text: message,
+                        icon: "error",
+                        button: "OK",
+                    });
+                    return false;
+                }
+            }
+            function clickNS4(e) {
+                if (document.layers || document.getElementById && !document.all) {
+                    if (e.which == 2 || e.which == 3) {
+                        swal({
+                            title: "ACCESS DENIED",
+                            text: message,
+                            icon: "error",
+                            button: "OK",
+                        });
+                        return false;
+                    }
+                }
+            }
+            if (document.layers) {
+                document.captureEvents(Event.MOUSEDOWN);
+                document.onmousedown = clickNS4;
+            }
+            else if (document.all && !document.getElementById) {
+                document.onmousedown = clickIE4;
+            }
+            document.oncontextmenu = new Function("return false")
+        </script>
+        <!--    script for disabling printing-->
+        <script language="javascript" type="text/javascript">
+            function AccessClipboardData() {
+                try {
+                    window.clipboardData.setData('text', "Print Disabled");
+                } catch (err) {
+                }
+        </script>
     </body>
 </html>
 }

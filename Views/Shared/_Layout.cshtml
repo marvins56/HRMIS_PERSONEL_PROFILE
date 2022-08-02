@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - HRMIS</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -15,20 +15,41 @@
 
 </head>
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
-            
+    @*<div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+
+                <span style="float:left"> <a href="#" class="text-white " style="font-size:3rem; "> </a></span>
+                <span style="float:right"></span>
+
             </div>
-        
-        </div>
-    </div>
+        </div>*@
+    <nav class="navbar navbar-dark bg-dark">
+
+
+        <a href="#" class="text-white nav-link " title="GO TO HRMIS" style="font-size:3rem;"> HRMIS PERSONEL PROFILE</a>
+        <a href="http://10.20.17.95/hrmis/ " target="_blank" class="text-white nav-link " style="font-size:2rem; float:right"> Go to HRMIS</a>
+
+    </nav>
+
+
     <div class="container body-content">
         @RenderBody()
         <hr />
-    
+
     </div>
 
+
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 " style="position:relative;bottom:0">
+            <div class="col-md-4 d-flex align-items-center">
+               
+                <span class="text-muted align-items-center">&copy; Uganda Police</span>
+            </div>
+
+           
+        </footer>
+    </div>
+    <!-- Footer -->
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)

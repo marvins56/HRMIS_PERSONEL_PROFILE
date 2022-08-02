@@ -18,106 +18,6 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
     {
         private Live_HRMISEntities1 db = new Live_HRMISEntities1();
 
-        // GET: Address
-        public ActionResult Index()
-        {
-            return View(db.PHYSICAL_ADDRESSES.ToList());
-        }
-
-        // GET: Address/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PHYSICAL_ADDRESSES pHYSICAL_ADDRESSES = db.PHYSICAL_ADDRESSES.Find(id);
-            if (pHYSICAL_ADDRESSES == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pHYSICAL_ADDRESSES);
-        }
-
-        // GET: Address/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Address/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PhysicalAddressID,EmpID,FNumber,Village,Parish,Subcounty,County,DistrictID,Town,PostalAddress,Email,FaxNo,MobilePhone,FixedTelephone,RecordedBy,DateRecorded")] PHYSICAL_ADDRESSES pHYSICAL_ADDRESSES)
-        {
-            if (ModelState.IsValid)
-            {
-                db.PHYSICAL_ADDRESSES.Add(pHYSICAL_ADDRESSES);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(pHYSICAL_ADDRESSES);
-        }
-
-        // GET: Address/Edit/5
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PHYSICAL_ADDRESSES pHYSICAL_ADDRESSES = db.PHYSICAL_ADDRESSES.Find(id);
-            if (pHYSICAL_ADDRESSES == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pHYSICAL_ADDRESSES);
-        }
-
-        // POST: Address/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PhysicalAddressID,EmpID,FNumber,Village,Parish,Subcounty,County,DistrictID,Town,PostalAddress,Email,FaxNo,MobilePhone,FixedTelephone,RecordedBy,DateRecorded")] PHYSICAL_ADDRESSES pHYSICAL_ADDRESSES)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(pHYSICAL_ADDRESSES).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(pHYSICAL_ADDRESSES);
-        }
-
-        // GET: Address/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PHYSICAL_ADDRESSES pHYSICAL_ADDRESSES = db.PHYSICAL_ADDRESSES.Find(id);
-            if (pHYSICAL_ADDRESSES == null)
-            {
-                return HttpNotFound();
-            }
-            return View(pHYSICAL_ADDRESSES);
-        }
-
-        // POST: Address/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            PHYSICAL_ADDRESSES pHYSICAL_ADDRESSES = db.PHYSICAL_ADDRESSES.Find(id);
-            db.PHYSICAL_ADDRESSES.Remove(pHYSICAL_ADDRESSES);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
         [HttpGet]
         public ActionResult GetUserDetails()
         {
@@ -130,75 +30,153 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         {
             try
             {
+                //force id
+                var forcenoid = db.PERSONAL_INFORMATION.Where(a=>a.ForceNo == users.FileNo).Select(a=>a.EmpID).FirstOrDefault();
+                //empid
                 var empid = db.PERSONAL_INFORMATION.Where(a => a.FileNo == users.FileNo).Select(a => a.EmpID).FirstOrDefault();
-                var FileNo = db.PERSONAL_INFORMATION.Where(a => a.FileNo == users.FileNo).FirstOrDefault();
-                var NIN = db.PERSONAL_INFORMATION.Where(a => a.EmpID == empid).Select(a => a.NIN).FirstOrDefault();
-                var userninid = db.PERSONAL_INFORMATION.Where(a => a.NIN == users.NIN).Select(a => a.EmpID).FirstOrDefault();
-
-                var email = db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == empid).Select(a => a.Email).FirstOrDefault();
-                var pass = db.PERSONAL_INFORMATION.Where(a => a.EmpID == empid).Select(a => a.Passcode).FirstOrDefault();
+                var FileNo = db.PERSONAL_INFORMATION.Where(a => a.FileNo == users.FileNo && a.EmpID == empid).Select(a=>a.FileNo).FirstOrDefault();
+                //fileno form force id
+                var Filenoforceid = db.PERSONAL_INFORMATION.Where(a => a.ForceNo == users.FileNo && a.EmpID == forcenoid).FirstOrDefault();
                 
+                if(empid > 0)
+                {
 
-                if (NIN == null)
-                {
-                    TempData["NINERROR"] = "NIN NOT FOUND";
-                }
-                else if (email == null)
-                {
-                    TempData["EMAILERROR"] = "EMAIL NOT FOUND";
-                }
-                else if (FileNo == null)
-                {
-                    TempData["FILENOERROR"] = "FILENO NOT FOUND";
-                }
-                else
-                {
-                   if(empid == userninid)
+
+                    var NIN = db.PERSONAL_INFORMATION.Where(a => a.EmpID == empid).Select(a => a.NIN).FirstOrDefault();
+                    var userninid = db.PERSONAL_INFORMATION.Where(a => a.NIN == users.NIN).Select(a => a.EmpID).FirstOrDefault();
+
+                    var email = db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == empid).Select(a => a.Email).FirstOrDefault();
+                    var pass = db.PERSONAL_INFORMATION.Where(a => a.EmpID == empid).Select(a => a.Passcode).FirstOrDefault();
+
+
+                    if (NIN == null)
                     {
-                        Session["userid"] = Convert.ToInt32(empid);
-                        var passcode = Generate_Pass();
-
-                        if (empid > 0 && email != null && NIN != null)
-                        {
-                            try
-                            {
-                                pass = passcode;
-
-                                int res = db.Database.ExecuteSqlCommand("Update PERSONAL_INFORMATION  set Passcode = '" + pass + "' where EmpID = '" + empid + "'");
-
-                                db.SaveChanges();
-
-                                SendEmailVerificationLink(email, passcode);
-
-                                TempData["verificationlink"] = "check email for verification code.";
-
-                            }
-                            catch (Exception e)
-                            {
-                                TempData["mailerror"] = e.Message;
-                            }
-                            return RedirectToAction("verify");
-                        }
-                        else
-                        {
-                            TempData["empid_email"] = "invalid email address";
-                        }
+                        TempData["NINERROR"] = "NIN NOT FOUND";
+                    }
+                    else if (email == null)
+                    {
+                        TempData["EMAILERROR"] = "EMAIL NOT FOUND";
+                    }
+                    else if (FileNo == null )
+                    {
+                        TempData["FILENOERROR"] = "FILENO NOT FOUND";
                     }
                     else
                     {
-                        TempData["idmissmatch"] = "USER NOT FOUND PLEASE CHECK FILENO OR NIN ";
+                        if (empid == userninid)
+                        {
+                            Session["userid"] = Convert.ToInt32(empid);
+                            var passcode = Generate_Pass();
+
+                            if (empid > 0 && email != null && NIN != null)
+                            {
+                                try
+                                {
+                                    pass = passcode;
+
+                                    int res = db.Database.ExecuteSqlCommand("Update PERSONAL_INFORMATION  set Passcode = '" + pass + "' where EmpID = '" + empid + "'");
+
+                                    db.SaveChanges();
+
+                                    SendEmailVerificationLink(email, passcode);
+
+                                    TempData["verificationlink"] = "check email for verification code.";
+
+                                }
+                                catch (Exception e)
+                                {
+                                    TempData["mailerror"] = e.Message;
+                                }
+                                return RedirectToAction("verify");
+                            }
+                            else
+                            {
+                                TempData["empid_email"] = "invalid email address";
+                            }
+                        }
+                        else
+                        {
+                            TempData["idmissmatch"] = "USER NOT FOUND PLEASE CHECK FILENO OR NIN ";
+                        }
+                    }
+
+
+                }
+                else if(forcenoid > 0 )
+                {
+
+
+                    var NIN = db.PERSONAL_INFORMATION.Where(a => a.EmpID == forcenoid).Select(a => a.NIN).FirstOrDefault();
+                    var userninid = db.PERSONAL_INFORMATION.Where(a => a.NIN == users.NIN).Select(a => a.EmpID).FirstOrDefault();
+
+                    var email = db.PHYSICAL_ADDRESSES.Where(a => a.EmpID == forcenoid).Select(a => a.Email).FirstOrDefault();
+                    var pass = db.PERSONAL_INFORMATION.Where(a => a.EmpID == forcenoid).Select(a => a.Passcode).FirstOrDefault();
+
+
+                    if (NIN == null)
+                    {
+                        TempData["NINERROR"] = "NIN NOT FOUND";
+                    }
+                    else if (email == null)
+                    {
+                        TempData["EMAILERROR"] = "EMAIL NOT FOUND";
+                    }
+                    else if ( Filenoforceid == null)
+                    {
+                        TempData["FILENOERROR"] = "FILENO NOT FOUND";
+                    }
+                    else
+                    {
+                        if (forcenoid == userninid)
+                        {
+                            Session["userid1"] = Convert.ToInt32(forcenoid);
+                            var passcode = Generate_Pass();
+
+                            if (forcenoid > 0 && email != null && NIN != null)
+                            {
+                                try
+                                {
+                                    pass = passcode;
+
+                                    int res = db.Database.ExecuteSqlCommand("Update PERSONAL_INFORMATION  set Passcode = '" + pass + "' where EmpID = '" + forcenoid + "'");
+
+                                    db.SaveChanges();
+
+                                    SendEmailVerificationLink(email, passcode);
+
+                                    TempData["verificationlink"] = "check email for verification code.";
+
+                                }
+                                catch (Exception e)
+                                {
+                                    TempData["mailerror"] = e.Message;
+                                }
+                                return RedirectToAction("verify");
+                            }
+                            else
+                            {
+                                TempData["empid_email"] = "invalid email address";
+                            }
+                        }
+                        else
+                        {
+                            TempData["idmissmatch"] = "USER NOT FOUND PLEASE CHECK FILENO OR NIN ";
+                        }
                     }
                 }
+                
+                else
+                {
+                    TempData["errorid"] = "INVALID FILE / FORCE NUMBER ENTERED";
+                }
+
             }catch(Exception e)
             {
                 TempData["usererror"] = e.Message;
             }
 
             return View(users);
-           
-
         }
-
         public ActionResult Report()
         {
             int id = Convert.ToInt32(Session["userid"]);
@@ -258,12 +236,22 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         
         public ActionResult verify(PERSONAL_INFORMATION passcodes)
         {
-            
-         int userid = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
 
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
-                var Passcode = db.PERSONAL_INFORMATION.Where(a => a.EmpID.Equals(userid)).Select(a => a.Passcode).FirstOrDefault();
+                var Passcode = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.Passcode).FirstOrDefault();
                 if (Passcode == passcodes.Passcode)
                 {
                     TempData["success"] = "verified";
@@ -342,15 +330,27 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
 
         public List<PERSONAL_INFORMATION> Get_personal_info()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+                 
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
 
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
+                
                 //picking data from diffrent tables using ids (inner join
-                //RANK
+                //RANk
                 var rankid = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.RankID).FirstOrDefault();
                 int id2 = Convert.ToInt32(rankid);             
-                var rankname = db.Ranks.Where(a => a.RankID.Equals(id2)).Select(a => a.Rank1).FirstOrDefault();
+                var rankname = db.Ranks.Where(a => a.RankID == id).Select(a => a.Rank1).FirstOrDefault();
                 TempData["rankname"] = rankname;
                 //NATIONALITY
                 var Nationalityid = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).Select(a => a.NationalityID).FirstOrDefault();
@@ -359,7 +359,7 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
              var nationalname = db.Nationalities.Where(a => a.NationalityID.Equals(id3)).Select(a => a.Nationality1).FirstOrDefault(); ;
                 TempData["Nationalityname"] = nationalname;
 
-                TempData["PERSONAL_INFORMATION"] = db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList().Count();
+                TempData["PERSONAL_INFORMATION"] = db.PERSONAL_INFORMATION.Where(a => a.EmpID ==id ).ToList().Count();
                 db.PERSONAL_INFORMATION.Where(a => a.EmpID == id).ToList();
                
             }
@@ -374,7 +374,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<HOME_ADDRESS> Get_HomeAddress()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 //home
@@ -385,7 +397,6 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
 
                 TempData["HOME_ADDRESS"] = db.HOME_ADDRESS.Where(a => a.EmpID == id).ToList().Count();
                 db.HOME_ADDRESS.Where(a => a.EmpID == id).ToList();
-
             }
             catch (Exception e)
             {
@@ -396,7 +407,20 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<DETAILS_OF_EMPLOYMENT> Get_employmentdetails()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["DETAILS_OF_EMPLOYMENT"] = db.DETAILS_OF_EMPLOYMENT.Where(a => a.EmpID == id).ToList().Count();
@@ -412,7 +436,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<EDUCATION_AND_QUALIFICATIONS_Old> Get_educationQualifications()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["EDUCATION_AND_QUALIFICATIONS_Old"] = db.EDUCATION_AND_QUALIFICATIONS_Old.Where(a => a.EmpID == id).ToList().Count();
@@ -428,7 +464,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<AWARDS_AND_COMMENDATIONS> Get_Awards()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["AWARDS_AND_COMMENDATIONS"] = db.AWARDS_AND_COMMENDATIONS.Where(a => a.EmpID == id).ToList().Count();
@@ -444,7 +492,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<PHYSICAL_ADDRESSES> Get_physicalAddress()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 //picking data from diffrent tables using ids (inner join
@@ -471,7 +531,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<PHYSICAL_FEATURES> Get_physicalfeatures()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["PHYSICAL_FEATURES"] = db.PHYSICAL_FEATURES.Where(a => a.EmpID == id).ToList().Count();
@@ -487,7 +559,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<DEPENDANT> Get_dependant()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["DEPENDANTS"] = db.DEPENDANTS.Where(a => a.EmpID == id).ToList().Count();
@@ -503,7 +587,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<ACCOMMODATION> accomodation()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["ACCOMMODATIONs"] = db.ACCOMMODATIONs.Where(a => a.EmpID == id).ToList().Count();
@@ -519,7 +615,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<LANGUAGES_PROFFECIENCY> Get_Language()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 //language
@@ -541,7 +649,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<HEALTH> Get_health()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["HEALTHs"] = db.HEALTHs.Where(a => a.EmpID == id).ToList().Count();
@@ -556,7 +676,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<PARENT> Get_parents()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["PARENTS"] = db.PARENTS.Where(a => a.EmpID == id).ToList().Count();
@@ -571,7 +703,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<PAY_AND_WELFARE> Paywelfare()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             { //picking data from diffrent tables using ids (inner join
                 //salaryscale
@@ -611,7 +755,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<NEXT_OF_KIN1> NOK1()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 //DISTRICT
@@ -634,7 +790,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         public List<NEXT_OF_KIN2> NOK2()
         {
 
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 //DISTRICT
@@ -656,7 +824,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<OTHER_RELATED_COURSES_ATTENDED> other_related_courses()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["OTHER_RELATED_COURSES_ATTENDED"] = db.OTHER_RELATED_COURSES_ATTENDED.Where(a => a.EmpID == id).ToList().Count();
@@ -671,7 +851,19 @@ namespace HRMIS_PERSONEL_PROFILE.Controllers
         }
         public List<FAMILY_INFORMATION> familyinfo()
         {
-            int id = Convert.ToInt32(Session["userid"]);
+            int idforceno = Convert.ToInt32(Session["userid1"]);
+            int idfilrno = Convert.ToInt32(Session["userid"]);
+            if (Session["userid1"] != null)
+            {
+                Session["id"] = idforceno;
+
+            }
+            else
+            {
+                Session["id"] = idfilrno;
+            }
+
+            int id = Convert.ToInt32(Session["id"]);
             try
             {
                 TempData["FAMILY_INFORMATION"] = db.FAMILY_INFORMATION.Where(a => a.EmpID == id).ToList().Count();

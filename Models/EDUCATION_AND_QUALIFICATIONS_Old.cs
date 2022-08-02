@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class EDUCATION_AND_QUALIFICATIONS_Old
     {
         public int EducationID { get; set; }
@@ -24,6 +25,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string To { get; set; }
         public string School { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }

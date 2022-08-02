@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PARENT
     {
         public int ParentID { get; set; }
@@ -22,6 +23,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string NameOfMother { get; set; }
         public string MothersStatus { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }

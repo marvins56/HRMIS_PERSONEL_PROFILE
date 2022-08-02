@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class NEXT_OF_KIN1
     {
         public int NextOfKin1ID { get; set; }
@@ -28,6 +29,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string Address { get; set; }
         public string TelephoneNo { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }

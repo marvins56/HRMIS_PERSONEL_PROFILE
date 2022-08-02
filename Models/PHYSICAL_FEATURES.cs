@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class PHYSICAL_FEATURES
     {
         public int FeatureID { get; set; }
@@ -31,6 +32,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string Complexion { get; set; }
         public string DistinguishingFeatures { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }

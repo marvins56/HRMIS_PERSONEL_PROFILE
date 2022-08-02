@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DETAILS_OF_EMPLOYMENT
     {
         public int EmptStatusID { get; set; }
@@ -27,6 +28,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public Nullable<System.DateTime> DateOfPosting { get; set; }
         public string PlaceOfPosting { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }
