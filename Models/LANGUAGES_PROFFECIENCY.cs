@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class LANGUAGES_PROFFECIENCY
     {
         public int LID { get; set; }
@@ -24,6 +25,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string Write { get; set; }
         public string Speak { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }

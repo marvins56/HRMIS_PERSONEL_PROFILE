@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DEPENDANT
     {
         public int DependantID { get; set; }
@@ -22,6 +23,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string Gender { get; set; }
         public Nullable<System.DateTime> DateOfBirth { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }

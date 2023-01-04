@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class HEALTH
     {
         public int HealthID { get; set; }
@@ -26,6 +27,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string DurationOfIllness { get; set; }
         public string OnMedication { get; set; }
         public string RecordedBy { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }

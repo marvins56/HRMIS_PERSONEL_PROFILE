@@ -11,7 +11,8 @@ namespace HRMIS_PERSONEL_PROFILE.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class ACCOMMODATION
     {
         public int AccomodationID { get; set; }
@@ -22,6 +23,7 @@ namespace HRMIS_PERSONEL_PROFILE.Models
         public string RecordedBy { get; set; }
         public string BarracksName { get; set; }
         public string HouseNumber { get; set; }
+        [DataType(DataType.Date)]
         public Nullable<System.DateTime> DateRecorded { get; set; }
     }
 }
